@@ -30,9 +30,9 @@ int union_find::find(int &p) {
   while (p != root) {
     int new_p = id[p];
     id[p] = root;
-    ht[p] = 2;
     p = new_p;
   }
+  ht[root] = 2;
   return root;
 }
 
