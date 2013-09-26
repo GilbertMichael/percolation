@@ -4,6 +4,7 @@
 #include <iostream>
 #include <time.h>
 #include <fstream>
+#include <vector>
 // local includes
 #include "percolation.h"
 #include "random.h"
