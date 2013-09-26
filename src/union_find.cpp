@@ -45,8 +45,7 @@ void union_find::unite(int p, int q) {
   int j = find(q);
   if (i == j) return;
   if      (ht[i] < ht[j]) { id[i] = j; sz[j] += sz[i]; }
-  else if (ht[j] < ht[i]) { id[j] = i; sz[i] += sz[j]; }  
-
+  else                    { id[j] = i; sz[i] += sz[j]; }  
   count--;
 }
 
