@@ -13,7 +13,7 @@
 class union_find {
   private:
     int * id;               // id[i] = parent of object i
-    int * ht;               // ht[i] = height of subtree rooted at i
+    int * sz;               // ht[i] = size (number of objects in) of subtree rooted at i
     int count;              // number of components
 
   public:
