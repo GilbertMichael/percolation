@@ -5,16 +5,16 @@
 union_find::union_find(int N) {
   count = N;
   id = new int[N];
-  ht = new int[N];
+  sz = new int[N];
   for (int i = 0; i < N; i++) {
     id[i] = i;
-    ht[i] = 1;
+    sz[i] = 1;
   }
 }
 
 union_find::~union_find() {
   delete [] id;
-  delete [] ht;
+  delete [] sz;
 }
 
 // counts the number of connected components in the tree
@@ -32,7 +32,6 @@ int union_find::find(int &p) {
     id[p] = root;
     p = new_p;
   }
-  ht[root] = 2;
   return root;
 }
 
@@ -45,9 +44,9 @@ void union_find::unite(int p, int q) {
   int i = find(p);
   int j = find(q);
   if (i == j) return;
-  if      (ht[i] < ht[j]) id[i] = j;
-  else if (ht[j] < ht[i]) id[j] = i;
-  else                  { id[i] = j; ht[j]++; }
+  if      (ht[i] < ht[j]) { id[i] = j; sz[j] += sz[i]; }
+  else if (ht[j] < ht[i]) { id[j] = i; sz[i] += sz[j]; }  
+
   count--;
 }
 
